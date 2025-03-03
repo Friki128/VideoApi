@@ -8,6 +8,7 @@
     "dev": "vite",
     "format": "prettier . --check",
     "lint": "eslint .",
+    "test:e2e": "test", 
     "preview": "vite preview",
     "test": "node --test --experimental-test-coverage"
   },
