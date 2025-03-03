@@ -8,11 +8,12 @@
     "dev": "vite",
     "format": "prettier . --check",
     "lint": "eslint .",
-    "test:e2e": "node --test --experimental-test-coverage", 
+    "test:e2e": "jest",
     "preview": "vite preview",
-    "test": "node --test --experimental-test-coverage"
+    "test": "jest"
   },
   "dependencies": {
+    "jest": "^29.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.1.1",
