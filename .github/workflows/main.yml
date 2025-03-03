@@ -43,7 +43,7 @@ jobs:
           docker build -t ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA .
       - name: Push Docker image to DockerHub
         run: |
-          docker ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA
+          docker run ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA
 
   e2e-tests:
     runs-on: ubuntu-latest
