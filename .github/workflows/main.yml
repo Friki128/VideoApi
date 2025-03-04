@@ -40,10 +40,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
         run: |
-          docker build -t ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA .
+          docker build -t ${{secrets.DOCKER_USERNAME}}/videoapi:latest .
       - name: Push Docker image to DockerHub
         run: |
-          docker push ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA
+          docker push ${{secrets.DOCKER_USERNAME}}/videoapi:latest
     
   deploy-to-server:
     runs-on: ubuntu-latest
@@ -59,10 +59,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{secrets.SSH_PORT}}
           script: |
-            docker pull ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA
+            docker pull ${{secrets.DOCKER_USERNAME}}/videoapi:latest
             docker stop videoapi || true
             docker rm videoapi || true
-            docker run -d --name videoapi -p 80:80 ${{secrets.DOCKER_USERNAME}}/videoapi:$GITHUB_SHA
+            docker run -d --name videoapi -p 80:80 ${{secrets.DOCKER_USERNAME}}/videoapi:latest
 
   e2e-tests:
     runs-on: ubuntu-latest
